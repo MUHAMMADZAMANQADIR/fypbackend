@@ -1,0 +1,4 @@
+{
+    "mongoURI" : "mongodb+srv://usman:usmany123@cris1.rp71n.mongodb.net/CRIS?retryWrites=true&w=majority",
+    "jwtSecret": "mysecrettoken"
+} 
