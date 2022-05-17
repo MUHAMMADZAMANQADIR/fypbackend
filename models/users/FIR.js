@@ -6,13 +6,21 @@ const FIRSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
+    caseID:{
+        type: String,
+        required: true,
+    },
     ReportType:{
        type: String,
        default: 'FIR',
     },
-    name: {
-        first: String,
-        last: String
+    firstName: {
+        type: String,
+        required: true,
+    },
+    lastName: {
+        type: String,
+        required: true,
     },
     phone: {
         type: Number,
@@ -28,9 +36,11 @@ const FIRSchema = new Schema({
     gender: {
         type: String
     },
+    crimeType:{
+        type: String
+    },
     policeStation: {
-        type: Schema.Types.ObjectId,
-        ref: 'policeStations'
+         type: String
     },
     investigationteam: {
         type: Schema.Types.ObjectId,
@@ -51,6 +61,9 @@ const FIRSchema = new Schema({
     subject: {
         type: String,
     },
+    city: {
+        type: String,
+    },
     firAgainst: {
         firstName: String,
         lastName: String,
@@ -66,7 +79,7 @@ const FIRSchema = new Schema({
     description: {
         type: String
     },
-    date: {
+    ReportedDate: {
         type: Date,
         default: Date.now()
     }

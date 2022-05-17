@@ -85,8 +85,28 @@ router.post('/registerinvestigationteams', async (req, res) => {
         res.status(500).send('server error')
     }
 })
+// @route          GET /api/investigation:id
+// description     get fir by id
+//access           private
 
-// @route          GET  /api/users
+router.get('/:id', async (req, res) => {
+    try {
+        const investigationTeams = await InvestigationTeam.findById(req.params.id)
+         
+        //check if any fir is present or not
+        if (!investigationTeams) {
+            return res.status(404).json({msg: 'fir not found'})
+        }
+        res.json(investigationTeams)
+    } catch (err) {
+        if (err.kind === 'ObjectId'){
+            return res.status(404).json({msg: 'investigation Teams  not found'})
+        }
+        res.status(500).send('server error')
+        console.log(err.message)
+    }
+})
+// @route          GET  /api/investigation
 // description     Get all the investigation teams
 //access           private
 

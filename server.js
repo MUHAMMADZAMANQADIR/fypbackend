@@ -28,9 +28,10 @@ app.use('/api/admin', require('./routes/api/adminPanel/policeStation'))
 
 //Define police station routes
 app.use('/api/policeStation', require('./routes/api/policeStation/policeStations'))
-//Define police station routes
+//Define investigation routes
 app.use('/api/investigationteams', require('./routes/api/policeStation/investigationTeam'))
-
+//Define get asinged everything routes
+app.use('/api/getcases', require('./routes/api/getcases/Getcases'))
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT , console.log(`server started on port ${PORT}`))

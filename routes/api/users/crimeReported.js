@@ -90,13 +90,14 @@ router.post('/:id',[
     }
     try {
         //console.log(req.files)
-        const { firstName,lastName,phone,address, state,province,CNIC,email,date,gender,
+        const { firstName,lastName,phone,address, state,province,CNIC,email,date,gender,status,
              city,policeStation,investigationteam,crimeType,location ,description,ReportedDate,caseID,ReportType} = req.body
         //crime reported model 
         const newCrimeReported = new CrimeReported({
             firstName,
             lastName,
             phone,
+            status,
             address,
             state,
             province,

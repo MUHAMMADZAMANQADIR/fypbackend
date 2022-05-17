@@ -6,10 +6,6 @@ const CrimeReportedScehema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'users'
     },
-    policeStation: {
-        type: Schema.Types.ObjectId,
-        ref: 'policeStations'
-    },
     investigationteam: {
         type: Schema.Types.ObjectId,
         ref: 'investigationTeams'
@@ -76,7 +72,12 @@ const CrimeReportedScehema = new Schema({
     ReportedDate: {
         type: Date,
         default: Date.now()
-    }
+    },
+    status:{
+       type: String,
+       default: 'In Progress',
+    },
+    
 })
 
 module.exports = CrimeReported = mongoose.model('crimeReported', CrimeReportedScehema)

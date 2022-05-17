@@ -14,9 +14,21 @@ const MukhbirSchema = new Schema({
         type: String,
         required: true
     },
+    policeStation: {
+        type: String,
+        required: true
+    },
+    caseID:{
+      type: String,
+      required: true,
+    },
     date: {
         type: String,
         required: true
+    },
+    ReportType:{
+       type: String,
+       default: 'Mukhbir',
     },
     location: {
         type: String,
@@ -26,13 +38,17 @@ const MukhbirSchema = new Schema({
         type: String,
         required: true
     },
-    policeStation: {
-        type: Schema.Types.ObjectId,
-        ref: 'policeStations'
-    },
     investigationteam: {
         type: Schema.Types.ObjectId,
         ref: 'investigationTeams'
+    },
+    status:{
+       type: String,
+       default: 'In Progress',
+    },
+    ReportedDate: {
+        type: Date,
+        default: Date.now()
     },
 })
 

@@ -7,7 +7,7 @@ const FIR = require('../../../models/users/FIR')
 const User = require('../../../models/users/Users')
 
 
-// @route          GET /api/fir
+// @route          Post /api/fir
 // description     file fir
 //access           private
 
@@ -19,51 +19,21 @@ router.post('/:id', async (req, res) => {
 
         //get fir data 
         const { 
-            firstName,
-            lastName,
-            phone,
-            email,
-            CNIC,
-            gender,
-            policeStation ,
-            investigationteam ,
-            address, 
-            state,
-            province,
-            zipPostalCode,
-            description,
-            subject,
-            status,
-            firAgainst,
-            ReportType,
-            ReportedDate, 
-            FIRID,
-
-              date 
-             city crimeType,location ,description,ReportedDate,caseID,ReportType
+            firstName,lastName,phone,email,CNIC,gender,policeStation ,investigationteam ,
+            address, state,province,zipPostalCode,description,subject,status, 
+            firAgainst,ReportType,ReportedDate, caseID,crimeType, city,   
         } = req.body
         
         //post model 
         const newFir = new FIR({
-            firstName,
-            lastName,
-            phone,
-            email,
-            CNIC,
-            gender,
-            address,
-            policestation,
-            state,
-            province,
-            zipPosta,
-            description,
-            subject,
-            firAgainst,
+            firstName,lastName,phone,email,CNIC,gender,policeStation ,investigationteam ,
+            address, state,province,zipPostalCode,description,subject,status,
+            firAgainst,ReportType,ReportedDate, caseID,crimeType,city, 
             user: req.params.id
         })
 
         const fir = await newFir.save()
-        res.json({msg:'your fir is submitted'})
+        res.json(fir)
 
     } catch (err) {
         res.status(500).send('server error')

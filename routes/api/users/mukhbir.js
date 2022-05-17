@@ -78,38 +78,71 @@ const Mukhbir = require('../../../models/users/Mukhbir')
 // description     crime reported
 //access           private
 
-router.post('/:id',[
+router.post('/:id',/**[
   check('description', 'description is required').not().isEmpty(),
   check('city', 'please enter a city').not().isEmpty(),
   check('date', 'date is required').not().isEmpty(),
   check('location', 'please enter location').not().isEmpty(),
   check('policeStation', 'please enter police station name').not().isEmpty()
-  ],
+  ],*/
   async (req, res) => {
-    const errors = validationResult(req)
+    /**const errors = validationResult(req)
     if (!errors.isEmpty()) {
        return res.status(400).json({ errors: errors.array() })
     }
-
+*/
     try {
-        const { description,city,date, location, policeStation} = req.body
+        const { description,city, caseID, date, policeStation,
+        location,investigationteam ,status 
+        } = req.body
         //mukhbir model 
+    
+    
         const newMukhbir = new Mukhbir({
-            description,
-            city,
-            date,
-            location,
-            policeStation,
+            description,city, caseID, date, policeStation,
+            location,investigationteam ,status,
             user: req.params.id
         })
 
         const mukhbir = await newMukhbir.save()
-        res.json('your response is submitted')
+        res.json(mukhbir)
     } catch (err) {
         res.status(500).send('server error')
         console.log(err.message)
     }
 })
-
-
+//to get mukhbir using id only
+router.get('/:id', async (req, res) => {
+    try {
+        const mukhbir = await Mukhbir.findById(req.params.id)
+        //check if any crime reported is present or not
+        if (!mukhbir) {
+            return res.status(404).json({msg: 'mukhbir report not found'})
+        }
+        res.json(mukhbir)
+    } catch (err) {
+        if (err.kind === 'ObjectId'){
+            return res.status(404).json({msg: '4crime report not found'})
+        }
+        res.status(500).send('server error')
+        console.log(err.message)
+    }
+})
+//to all mukbir
+router.get('/', async (req, res) => {
+    try {
+        const mukhbir = await Mukhbir.find( )
+        //check if any crime reported is present or not
+        if (!mukhbir) {
+            return res.status(404).json({msg: 'mukhbir report not found'})
+        }
+        res.json(mukhbir)
+    } catch (err) {
+        if (err.kind === 'ObjectId'){
+            return res.status(404).json({msg: '4crime report not found'})
+        }
+        res.status(500).send('server error')
+        console.log(err.message)
+    }
+})
 module.exports = router
