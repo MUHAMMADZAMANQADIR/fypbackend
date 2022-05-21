@@ -95,7 +95,7 @@ router.get('/:id', async (req, res) => {
          
         //check if any fir is present or not
         if (!investigationTeams) {
-            return res.status(404).json({msg: 'fir not found'})
+            return res.status(404).json({msg: 'investigation not found'})
         }
         res.json(investigationTeams)
     } catch (err) {

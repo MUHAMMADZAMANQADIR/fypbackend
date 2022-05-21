@@ -32,6 +32,8 @@ app.use('/api/policeStation', require('./routes/api/policeStation/policeStations
 app.use('/api/investigationteams', require('./routes/api/policeStation/investigationTeam'))
 //Define get asinged everything routes
 app.use('/api/getcases', require('./routes/api/getcases/Getcases'))
+//Define update cases routes
+app.use('/api/updatedReported', require('./routes/api/UpdatedReport/updatedReportRoutes'))
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT , console.log(`server started on port ${PORT}`))
