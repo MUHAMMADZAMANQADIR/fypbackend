@@ -34,8 +34,6 @@ const updatedmukhbirReportschema = new Schema({
         type: String,
          
     },
-   
-  
      
 })
 

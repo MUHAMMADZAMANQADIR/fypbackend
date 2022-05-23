@@ -18,14 +18,15 @@ const updatedFIRReportschema = new Schema({
         type: Schema.Types.ObjectId,
         ref: 'fir'
     },
+    detailedDescription:{
+        type: String,
+    },
     Bayans:[{
       PersonName: String,
       BayanofPerson: String,
     }    
     ],
-    detailedDescription:{
-        type: String,
-    },
+
     closingdate: {
         type: String,
          

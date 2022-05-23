@@ -10,93 +10,6 @@ const updatedfir=require('../../../models/UpdatedReport/updatedFirReport')
 const updatedcrimeReported=require('../../../models/UpdatedReport/updatedCRIMEREPORT')
 
 
-//post updatedmukhbir using updated investigationid 
-router.post('/updatedmukhbir/:id' ,  async (req, res) => {
-    try {
-         
-        const { Bayans,Repoterid, caseID, detailedDescription,closingdate, FinalRemarks ,ReportType} =req.body
-        //mukhbir model 
-        
-        let  updateorpost=  await updatedmukhbir.findOne({caseID:caseID})
-        if(updateorpost){
-         const newData = {}
-         if (Bayans) { 
-              newData.Bayans = Bayans}
-         if (detailedDescription){
-             newData.detailedDescription = detailedDescription
-            }
-
-         const user = await updatedmukhbir.findOneAndUpdate(
-                { caseID:caseID },
-                { $set: newData },
-                { new: true })
-            
-            return res.json(user)
-
-        }
-        else{
-            const newMukhbir = new updatedmukhbir({
-            Bayans, Repoterid, caseID, detailedDescription,closingdate, FinalRemarks,ReportType,
-            investigationteam: req.params.id
-
-        })
-        const mukhbir = await newMukhbir.save()
-        res.json(mukhbir)
-        }
-       
-
-        
-        
-    } catch (err) {
-        res.status(500).send('server error')
-        console.log(err.message)
-    }
-}
-
-)
-//post updatedFIR using updated investigationid 
-router.post('/updatedFIR/:id' ,  async (req, res) => {
- try {
-        const { Bayans,Repoterid, caseID, detailedDescription,closingdate, FinalRemarks ,ReportType} =req.body
-        //mukhbir model 
-        
-        let  updateorpost=  await updatedfir.findOne({caseID:caseID})
-        if(updateorpost){
-         const newData = {}
-        if (Bayans) { 
-              newData.Bayans = Bayans}
-        if (detailedDescription){
-             newData.detailedDescription = detailedDescription
-            }
-
-         const user = await updatedfir.findOneAndUpdate(
-                { caseID:caseID },
-                { $set: newData },
-                { new: true })
-            
-            return res.json(user)
-
-        }
-        else{
-            const newfir = new updatedfir({
-            Bayans, Repoterid, caseID, detailedDescription,closingdate, FinalRemarks,ReportType,
-            investigationteam: req.params.id
-
-        })
-        const fir = await newfir.save()
-        res.json(fir)
-        }
-       
-
-        
-        
-    } catch (err) {
-        res.status(500).send('server error')
-        console.log(err.message)
-    }
-}
-
-)
 //post updatedcrimeReported using updated investigationid 
 router.post('/updatedcrimeReported/:id' ,  async (req, res) => {
  try {
@@ -205,4 +118,96 @@ router.get('/updatedfir', async (req, res) => {
     }
 })
 
+
+
+
+
+
+//post updatedmukhbir using updated investigationid 
+router.post('/updatedmukhbir/:id' ,  async (req, res) => {
+    try {
+         
+        const { Bayans,Repoterid, caseID, detailedDescription,closingdate, FinalRemarks ,ReportType} =req.body
+        //mukhbir model 
+        
+        let  updateorpost=  await updatedmukhbir.findOne({caseID:caseID})
+        if(updateorpost){
+         const newData = {}
+         if (Bayans) { 
+              newData.Bayans = Bayans}
+         if (detailedDescription){
+             newData.detailedDescription = detailedDescription
+            }
+
+         const user = await updatedmukhbir.findOneAndUpdate(
+                { caseID:caseID },
+                { $set: newData },
+                { new: true })
+            
+            return res.json(user)
+
+        }
+        else{
+            const newMukhbir = new updatedmukhbir({
+            Bayans, Repoterid, caseID, detailedDescription,closingdate, FinalRemarks,ReportType,
+            investigationteam: req.params.id
+
+        })
+        const mukhbir = await newMukhbir.save()
+        res.json(mukhbir)
+        }
+       
+
+        
+        
+    } catch (err) {
+        res.status(500).send('server error')
+        console.log(err.message)
+    }
+}
+
+)
+//post updatedFIR using updated investigationid 
+router.post('/updatedFIR/:id' ,  async (req, res) => {
+ try {
+        const { Bayans,Repoterid, caseID, detailedDescription,closingdate, FinalRemarks ,ReportType} =req.body
+        //mukhbir model 
+        
+        let  updateorpost=  await updatedfir.findOne({caseID:caseID})
+        if(updateorpost){
+         const newData = {}
+        if (Bayans) { 
+              newData.Bayans = Bayans}
+        if (detailedDescription){
+             newData.detailedDescription = detailedDescription
+            }
+
+         const user = await updatedfir.findOneAndUpdate(
+                { caseID:caseID },
+                { $set: newData },
+                { new: true })
+            
+            return res.json(user)
+
+        }
+        else{
+            const newfir = new updatedfir({
+            Bayans, Repoterid, caseID, detailedDescription,closingdate, FinalRemarks,ReportType,
+            investigationteam: req.params.id
+
+        })
+        const fir = await newfir.save()
+        res.json(fir)
+        }
+       
+
+        
+        
+    } catch (err) {
+        res.status(500).send('server error')
+        console.log(err.message)
+    }
+}
+
+)
 module.exports = router

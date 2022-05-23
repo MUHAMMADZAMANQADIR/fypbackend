@@ -38,6 +38,8 @@ app.use('/api/updatedReported', require('./routes/api/UpdatedReport/updatedRepor
 app.use('/api/news', require('./routes/api/NewsRoom/NewsRoom'))
 //Define Notification  routes
 app.use('/api/notification', require('./routes/api/Notification/notification'))
+//Define update cases routes
+app.use('/api/updatedReported', require('./routes/api/UpdatedReport/UpdatesInonetable'))
 const PORT = process.env.PORT || 5000
 
 app.listen(PORT , console.log(`server started on port ${PORT}`))
