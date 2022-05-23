@@ -55,7 +55,7 @@ router.post('/sendnotification', async (req, res) => {
 router.get('/getnoticication', async (req, res) => {
     try {
         const Notification = await notification.find()
-        console.log(Notification)
+        
         res.json(Notification)
 
     } catch (err) {
