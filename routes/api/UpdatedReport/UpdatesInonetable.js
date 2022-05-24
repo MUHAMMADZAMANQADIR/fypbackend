@@ -44,7 +44,7 @@ const { request } = require('http');
 
 
 //post updatedReported using updated investigationid 
-router.post('/updatedReported/:id',upload.array('Files', 12) ,  async (req, res) => {
+router.post('/updatedReport/:id',upload.array('Files', 12) ,  async (req, res) => {
  try {
         
         console.log("-------------",)
@@ -61,7 +61,9 @@ router.post('/updatedReported/:id',upload.array('Files', 12) ,  async (req, res)
         if (detailedDescription){
              newData.detailedDescription = detailedDescription
             }
-            
+        if(req.files){
+            newData.Files =  req.files
+        }   
         if (caseID){
              newData.caseID = caseID
             }
@@ -96,4 +98,14 @@ router.post('/updatedReported/:id',upload.array('Files', 12) ,  async (req, res)
 })
 
 
+//get  updated using updated case id 
+router.get('/updatedReport', async (req, res) => {
+    try {
+        const updatedReported = await updatedfir.find()
+        res.json(updatedReported)
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('server error')
+    }
+})
 module.exports = router
