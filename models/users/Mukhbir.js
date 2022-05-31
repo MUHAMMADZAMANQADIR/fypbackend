@@ -50,6 +50,15 @@ const MukhbirSchema = new Schema({
         type: Date,
         default: Date.now()
     },
+    audio:{
+       type: String,
+    },
+    video:{
+        type: String,
+    },
+    img:{
+      type: String,
+    }
 })
 
 module.exports = Mukhbir = mongoose.model('mukhbir', MukhbirSchema)

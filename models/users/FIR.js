@@ -82,6 +82,15 @@ const FIRSchema = new Schema({
     ReportedDate: {
         type: Date,
         default: Date.now()
+    },
+    audio:{
+       type: String,
+    },
+    video:{
+        type: String,
+    },
+    img:{
+      type: String,
     }
 })
 

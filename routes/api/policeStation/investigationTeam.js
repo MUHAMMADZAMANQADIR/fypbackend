@@ -85,6 +85,20 @@ router.post('/registerinvestigationteams', async (req, res) => {
         res.status(500).send('server error')
     }
 })
+
+// @route          GET  /api/investigation
+// description     Get all the investigation teams
+//access           private
+
+router.get('/allinvestigationteams', async (req, res) => {
+    try {
+        const investigationTeams = await InvestigationTeam.find()
+        res.json(investigationTeams)
+    } catch (err) {
+        console.log(err.message)
+        res.status(500).send('server error')
+    }
+})
 // @route          GET /api/investigation:id
 // description     get fir by id
 //access           private
@@ -106,19 +120,7 @@ router.get('/:id', async (req, res) => {
         console.log(err.message)
     }
 })
-// @route          GET  /api/investigation
-// description     Get all the investigation teams
-//access           private
 
-router.get('/allinvestigationteams', async (req, res) => {
-    try {
-        const investigationTeams = await InvestigationTeam.find()
-        res.json(investigationTeams)
-    } catch (err) {
-        console.log(err.message)
-        res.status(500).send('server error')
-    }
-})
 // @route          POST /api/itm
 // description     Login investigation team
 //access           private

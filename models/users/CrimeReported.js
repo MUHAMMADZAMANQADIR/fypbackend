@@ -77,7 +77,15 @@ const CrimeReportedScehema = new Schema({
        type: String,
        default: 'In Progress',
     },
-    
+    audio:{
+       type: String,
+    },
+    video:{
+        type: String,
+    },
+    img:{
+      type: String,
+    },
 })
 
 module.exports = CrimeReported = mongoose.model('crimeReported', CrimeReportedScehema)

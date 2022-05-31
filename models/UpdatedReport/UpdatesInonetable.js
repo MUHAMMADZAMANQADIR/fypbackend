@@ -8,7 +8,6 @@ const updatedReportschema = new Schema({
     }, 
     ReportType:{
        type: String,
-
     },
     investigationteam: {
         type: Schema.Types.ObjectId,
@@ -18,8 +17,8 @@ const updatedReportschema = new Schema({
         type: String,
     },
     Bayans:[{
-      PersonName: String,
-      BayanofPerson: String,
+      Name: String,
+      Bayan: String,
     }    
     ],
     detailedDescription:{
@@ -33,7 +32,8 @@ const updatedReportschema = new Schema({
         type: String,
          
     },
-    Files: [{ }]
+    IFiles: [{url: String}],
+    VFiles: [{url: String}],
      
 })
 
