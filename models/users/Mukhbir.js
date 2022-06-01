@@ -35,8 +35,7 @@ const MukhbirSchema = new Schema({
         // required: true
     },
     policeStation: {
-        type: String,
-        required: true
+        type: String
     },
     investigationteam: {
         type: Schema.Types.ObjectId,

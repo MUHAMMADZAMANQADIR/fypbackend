@@ -18,9 +18,9 @@ const Mukhbir = require('../../../models/users/Mukhbir')
 //access           public
 
 router.post('/registerinvestigationteams', async (req, res) => {
-
-    const { UserName, Password ,TeamName ,LeaderName, TotalAssigncase,
-        TotalResolvedcase,UnderInvestigation,Email,Phone , Address} = req.body
+     
+    console.log(req.body)
+    const { UserName, Password ,TeamName,TeamLeadCNIC ,LeaderName,PoliceStationLocation,PoliceStationID, Email,Phone, Address,City} = req.body
     
     //get the police station who creates investigation team
     //const policeStation = await PoliceStation.findById(req.policeStation.id)
@@ -37,16 +37,14 @@ router.post('/registerinvestigationteams', async (req, res) => {
             Password,
             TeamName,
             LeaderName,
-            TotalAssigncase,
-            TotalResolvedcase,
-            UnderInvestigation,
+            TeamLeadCNIC,
+            PoliceStationLocation,
             Email,
             Phone,
             Address,
-            TeamLeadCNIC,
             PoliceStationID,
-            City ,
-            PoliceStationLocation, 
+            City,
+            
              
         })
 

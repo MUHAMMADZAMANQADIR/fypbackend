@@ -45,8 +45,7 @@ const CrimeReportedScehema = new Schema({
         type: String
     },
     policeStation: {
-        type: String,
-        required: true
+        type: String
     },
     crimeType: {
         type: String,
